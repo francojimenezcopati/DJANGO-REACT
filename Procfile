@@ -1,1 +1,1 @@
-web: gunicorn 'tasks.wsgi'
+web: gunicorn 'crud_api.wsgi'
