@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os, dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,15 +86,24 @@ WSGI_APPLICATION = "crud_api.wsgi.application"
 #     }
 # }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "railway",
+#         "USER": "postgres",
+#         "PASSWORD": "g4GFeA13FdEBCbdC3B2-gF611bc-CBdg",
+#         "HOST": "postgres.railway.internal",
+#         "PORT": "5432",
+#     }
+# }
+
+# DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER": "postgres",
-        "PASSWORD": "g4GFeA13FdEBCbdC3B2-gF611bc-CBdg",
-        "HOST": "postgres.railway.internal",
-        "PORT": "5432",
-    }
+    "default": dj_database_url.config(
+        default='postgresql://postgres:g4GFeA13FdEBCbdC3B2-gF611bc-CBdg@postgres.railway.internal:5432/railway',
+        conn_max_age=600
+    )
 }
 
 
