@@ -31,9 +31,9 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENVIRONMENT == 'development'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['crud-django-react.up.railway.app', 'localhost', '127.0.0.1']
 
-'postgresql://postgres:g4GFeA13FdEBCbdC3B2-gF611bc-CBdg@postgres.railway.internal:5432/railway'
+CSRF_TRUSTED_ORIGINS = ['http://crud-django-react.up.railway.app']
 
 
 # Application definition
