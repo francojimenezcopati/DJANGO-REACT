@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os, dj_database_url
 
+from environ import Env
+env = Env()
+Env.read_env()
+ENVIRONMENT = env('ENVIRONMENT', default='production')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-u(j%^@gkf2dk!5o*90^c(1=(gpqb12_-qm!!db257##8r=x%f*"
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = ENVIRONMENT == 'development'
 
 ALLOWED_HOSTS = ['*']
+
+'postgresql://postgres:g4GFeA13FdEBCbdC3B2-gF611bc-CBdg@postgres.railway.internal:5432/railway'
 
 
 # Application definition
@@ -101,12 +108,13 @@ WSGI_APPLICATION = "crud_api.wsgi.application"
 # DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
 
 DATABASES = {
-    "default": dj_database_url.config(
-        default='postgresql://postgres:g4GFeA13FdEBCbdC3B2-gF611bc-CBdg@postgres.railway.internal:5432/railway',
-        conn_max_age=600
-    )
+    "default": {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+    }
 }
 
+DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -143,9 +151,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "/static/"
-if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
