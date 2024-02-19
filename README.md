@@ -1,1 +1,1 @@
-# try it out -> https://crud-django-react.up.railway.app
+# try it out -> https://crud-django-react.up.railway.app/tasks/
