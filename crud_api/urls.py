@@ -23,5 +23,6 @@ def render_react(request):
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", render_react),
     path('', include('tasks.urls')),
 ]
