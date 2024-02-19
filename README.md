@@ -1,0 +1,1 @@
+try it out -> crud-django-react.up.railway.app
