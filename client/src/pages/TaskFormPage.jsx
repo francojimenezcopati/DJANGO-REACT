@@ -44,6 +44,7 @@ export function TaskFormPage() {
                 const { data } = await getTask(params.id);
                 setValue("title", data.title);
                 setValue("description", data.description);
+                setValue("done", data.done);
             }
         };
         loadTask();
@@ -65,6 +66,19 @@ export function TaskFormPage() {
                 <textarea placeholder="Description" {...register("description", { required: true })} className="bg-zinc-700 p-3 rounded-lg block w-full" />
 
                 {errors.description && <span>This field is required</span>}
+
+                <div className="flex items-center m-2">
+                    <input
+                        id="default-checkbox"
+                        {...register("done")}
+                        type="checkbox"
+                        value=""
+                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    />
+                    <label for="default-checkbox" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Done
+                    </label>
+                </div>
 
                 <button className="bg-indigo-500 p-3 rounded-lg block w-full mt-3">Save</button>
             </form>

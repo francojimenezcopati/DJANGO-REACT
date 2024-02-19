@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
 
-    "relocate": "npm run build && rmdir /s /q ..\\dist && move /y dist .."
+    "relocate": "npm run build && rename dist\\assets\\*.js indexjs.js && rename dist\\assets\\*.css indexcss.css && rmdir /s /q ..\\static\\assets && move /y dist\\assets ..\\static && rmdir /s /q dist"
   },
   "dependencies": {
     "axios": "^1.6.5",
