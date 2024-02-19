@@ -1,1 +1,3 @@
-# try it out -> https://crud-django-react.up.railway.app
+# Django-React CRUD
+## try it out -> https://crud-django-react.up.railway.app
+## 
