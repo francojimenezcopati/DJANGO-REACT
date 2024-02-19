@@ -1,3 +1,3 @@
 # Django-React CRUD
-## try it out -> https://crud-django-react.up.railway.app
-## 
+## Try it out -> https://crud-django-react.up.railway.app
+## See the API docs here -> https://crud-django-react.up.railway.app/docs/
