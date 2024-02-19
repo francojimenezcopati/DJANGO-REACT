@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const TASKS_API_URL = "http://127.0.0.1:8000/tasks/";
-const TASKS_API_URL = "https://crud-django-react.up.railway.app/tasks/";
+// const TASKS_API_URL = "http://127.0.0.1:8000/api/v1/tasks/";
+const TASKS_API_URL = "https://crud-django-react.up.railway.app/api/v1/tasks/";
 
 const tasksApi = axios.create({
     baseURL: TASKS_API_URL,
